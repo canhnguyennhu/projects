@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import menus from "../../configs/menus";
+import { setOpeningNewBook, updateBook } from "../../stores/BooksSlice"
 import "./style.css";
 
 const Book = ({}) => {
 	const [name, setName] = useState();
 	const [author, setAuthor] = useState();
 	const [type, setType] = useState("economy");
+	const dispatch = useDispatch();
 
 	const onChangeText = (e) => {
 		const value = e.target.value;
@@ -19,12 +21,14 @@ const Book = ({}) => {
 	}
 
 	const onSubmit = () => {
-		// bookStore.updateBook({
-		// 	name: name,
-		// 	author: author,
-		// 	description: "",
-		// 	price: ""
-		// }, type)
+		const book = {
+				name: name,
+				author: author,
+				description: "",
+				price: "",
+		}
+		dispatch(updateBook({book, type}))
+		dispatch(setOpeningNewBook(false));
 	}
 
 	const onChangeBookType = (e) => {
@@ -32,7 +36,7 @@ const Book = ({}) => {
 	}
 
 	const closeModal = () => {
-		// bookStore.setOpeningNewBook(false);
+		dispatch(setOpeningNewBook(false));
 	}
 	return (
 		<div className="book-container">

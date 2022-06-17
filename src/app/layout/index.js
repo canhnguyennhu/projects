@@ -9,7 +9,6 @@ import "./style.css"
 
 const MainLayout = ({ children }) =>  {
 	const openingNewBook = useSelector(openingNewBookSelector);
-	console.log("openingNewBook get:", openingNewBook)
 	return (
 			<div className="main-layout">
 				<Header/>

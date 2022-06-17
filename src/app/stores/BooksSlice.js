@@ -12,7 +12,6 @@ export const BooksSlice = createSlice({
 
 	reducers: {
 		setOpeningNewBook: (state, { payload }) => {
-			console.log("openingNewBook:", payload);
 			state.openingNewBook = payload;
 		},
 		updateBook: (state, { payload }) => {

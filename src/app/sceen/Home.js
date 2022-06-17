@@ -3,11 +3,15 @@ import { useSelector } from 'react-redux'
 import { getBookTypeFromPathName, getBooks } from '../services/helper'
 import { booksSelector } from '../stores/BooksSlice'
 import "./style.css";
+import { Redirect } from "react-router";
 
 const Home = ({ location }) => {
 	const type = getBookTypeFromPathName(location.pathname);
  const booksData = 	useSelector(booksSelector);
  const books = getBooks(booksData, type);
+	if (!type) {
+		return <Redirect to={'/home'}></Redirect>
+	}
 	return (
 		<MainLayout>
 			{

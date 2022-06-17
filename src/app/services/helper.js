@@ -5,7 +5,7 @@ export const getBookTypeFromPathName = (pathname) =>{
 
 export const getBooks = (books, type) => {
 	const fetchArr = [];
-	if (type !== "home") {
+	if (type && type !== "home") {
 		fetchArr.push(...books[type])
 		return fetchArr
 	}
